@@ -6,6 +6,8 @@ import com.udev.marketplace.repository.UsuarioRepositorio;
 import com.udev.marketplace.service.dto.UsuarioDTO;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UsuarioServicio {
 
@@ -20,5 +22,9 @@ public class UsuarioServicio {
     public Usuario crearUsuario(UsuarioDTO usuarioDTO){
         Usuario usuario = mapper.map(usuarioDTO);
         return this.repositorio.save(usuario);
+    }
+
+    public List<Usuario> listar(){
+        return this.repositorio.findAll();
     }
 }
