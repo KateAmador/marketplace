@@ -26,4 +26,9 @@ public class UsuarioControlador {
     public List<Usuario> listar(){
         return this.usuarioServicio.listar();
     }
+
+    @PutMapping("/{id}")
+    public Usuario actualizarUsuario(@PathVariable("id") Long id, @RequestBody UsuarioDTO usuarioDTO) {
+        return usuarioServicio.actualizarUsuario(id, usuarioDTO);
+    }
 }

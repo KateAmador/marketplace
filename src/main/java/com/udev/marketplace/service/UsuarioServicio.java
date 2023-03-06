@@ -27,4 +27,15 @@ public class UsuarioServicio {
     public List<Usuario> listar(){
         return this.repositorio.findAll();
     }
+
+    public Usuario actualizarUsuario(Long id, UsuarioDTO usuarioDTO) {
+        Usuario usuario = repositorio.findById(id).orElseThrow(() -> new IllegalArgumentException("ID inválido"));
+        usuario.setNombre(usuarioDTO.getNombre());
+        usuario.setApellido(usuarioDTO.getApellido());
+        usuario.setTelefono(usuarioDTO.getTelefono());
+        usuario.setEmail(usuarioDTO.getEmail());
+        usuario.setContraseña(usuarioDTO.getContraseña());
+        return repositorio.save(usuario);
+    }
+
 }
