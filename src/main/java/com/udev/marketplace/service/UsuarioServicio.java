@@ -4,9 +4,11 @@ import com.udev.marketplace.mapper.UsuarioDTOAUsuario;
 import com.udev.marketplace.model.Usuario;
 import com.udev.marketplace.repository.UsuarioRepositorio;
 import com.udev.marketplace.service.dto.UsuarioDTO;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsuarioServicio {
@@ -38,4 +40,8 @@ public class UsuarioServicio {
         return repositorio.save(usuario);
     }
 
+    public void borrarPorId(Long id){
+        Optional<Usuario> optionalUsuario = this.repositorio.findById(id);
+        this.repositorio.deleteById(id);
+    }
 }

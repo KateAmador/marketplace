@@ -3,6 +3,7 @@ package com.udev.marketplace.controller;
 import com.udev.marketplace.model.Usuario;
 import com.udev.marketplace.service.UsuarioServicio;
 import com.udev.marketplace.service.dto.UsuarioDTO;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,5 +31,11 @@ public class UsuarioControlador {
     @PutMapping("/{id}")
     public Usuario actualizarUsuario(@PathVariable("id") Long id, @RequestBody UsuarioDTO usuarioDTO) {
         return usuarioServicio.actualizarUsuario(id, usuarioDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> borrarPorId(@PathVariable("id") Long id){
+        this.usuarioServicio.borrarPorId(id);
+        return ResponseEntity.noContent().build();
     }
 }
