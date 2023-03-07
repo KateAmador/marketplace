@@ -4,7 +4,6 @@ import com.udev.marketplace.mapper.UsuarioDTOAUsuario;
 import com.udev.marketplace.model.Usuario;
 import com.udev.marketplace.repository.UsuarioRepositorio;
 import com.udev.marketplace.service.dto.UsuarioDTO;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,6 +27,10 @@ public class UsuarioServicio {
 
     public List<Usuario> listar(){
         return this.repositorio.findAll();
+    }
+
+    public Optional<Usuario> buscarPorId(Long id) {
+        return repositorio.findById(id);
     }
 
     public Usuario actualizarUsuario(Long id, UsuarioDTO usuarioDTO) {

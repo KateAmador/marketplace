@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/usuarios")
@@ -28,9 +29,14 @@ public class UsuarioControlador {
         return this.usuarioServicio.listar();
     }
 
+    @GetMapping("/{id}")
+    public Optional<Usuario> buscarPorId(@PathVariable("id") Long id) {
+        return this.usuarioServicio.buscarPorId(id);
+    }
+
     @PutMapping("/{id}")
     public Usuario actualizarUsuario(@PathVariable("id") Long id, @RequestBody UsuarioDTO usuarioDTO) {
-        return usuarioServicio.actualizarUsuario(id, usuarioDTO);
+        return this.usuarioServicio.actualizarUsuario(id, usuarioDTO);
     }
 
     @DeleteMapping("/{id}")
